@@ -5,4 +5,6 @@
 >>【3】熟悉semanticui的基本元素用法，实现一个简单的输入和简单的表格;<br>
 >>【4】使用vuejs+semanticui创建的ToDoList: [Demo源码](https://github.com/BIGBANGTAEYANG/VueJs_Study/tree/master/ToDoList);<br>
 >>【实现效果如下：】<br>
-![]()  
+>>(1)使用VueJs实现输入添加用户;<br>
+>>(2)使用VueJs实现删除用户以及全部删除,删除时候出现弹出层model<br>
+>>![](https://github.com/BIGBANGTAEYANG/VueJs_Study/blob/master/DemoImage/todolist.png)  
