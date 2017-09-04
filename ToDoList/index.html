@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDoList</title>
-    <link rel="stylesheet" href="./semantic/semantic.min.css">
-    <script src="./asset/js/jquery.min.js"></script>
-    <script src="./semantic/semantic.min.js"></script>
-    <script src="./asset/vue/vue.js"></script>
+    <link rel="stylesheet" href="../dist/semantic/semantic.min.css">
+    <script src="../dist/asset/js/jquery.min.js"></script>
+    <script src="../dist/semantic/semantic.min.js"></script>
+    <script src="../dist/asset/vue/vue.js"></script>
 
 </head>
     <body>
@@ -24,7 +24,7 @@
         </div>
         <br/><br/>
         <button class="ui primary button" v-on:click="add">添加</button>
-        <button type="reset" class="ui negative button" v-on:click="reset">重置</button>
+        <button class="ui negative button" v-on:click="reset">重置</button>
         <hr>
 
         <table class="ui teal selectable celled table ">
