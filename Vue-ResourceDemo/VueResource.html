@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EventDemo</title>
+    <link rel="stylesheet" href="../dist/semantic/semantic.min.css">
+    <script src="../dist/asset/js/jquery.min.js"></script>
+    <script src="../dist/semantic/semantic.min.js"></script>
+    <script src="../dist/asset/vue/vue.js"></script>
+    <script src="../dist/asset/vue/vue-resource.min.js"></script>
+
+</head>
+    <body>
+        <div class="ui-container" id="container">
+            <div class="ui action input">
+              <input type="text" v-model="searchword" placeholder="搜索.....">
+              <button class="ui teal button" @click="search()" @keydown.enter="search()">Search</button>
+            </div>
+            <hr>
+            <div class="ui teal segment">
+               <div class="ui teal relaxed divided list" v-for="(data,index) in resultdata">
+                    <div class="item" v-show="resultdata.length!=0">
+                       <div class="content">
+                       <div class="header">
+                            编号：{{index+1}}
+                       </div> 
+                            结果：{{data}}
+                       </div>
+                    </div>     
+               </div>
+               <div class="ui teal relaxed divided list" v-show="resultdata.length==0">
+                    <div class="item" >
+                       <div class="content">
+                       <div class="header">编号:无</div>暂无数据.....</div>
+                    </div>       
+               </div>
+            </div>
+                    
+        </div>
+
+
+
+        <script>
+            window.onload = function(){
+                var vue = new Vue({
+                    el:"#container",
+                    data:{
+                        searchword:"",
+                        resultdata:[]
+                    },
+                    methods:{
+                        search:function(){
+                        this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{  
+                            params:{  
+                                wd:this.searchword
+                            },  
+                            jsonp:"cb"  
+                        } ).then(function(res){
+                            this.resultdata = res.data.s;
+                        },function(res){
+                            alert(res.err);
+                        });
+                        }
+                    }
+                });
+            }
+        </script>
+
+    </body>
+</html>

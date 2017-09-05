@@ -11,4 +11,5 @@
 >>二、VueJs学习记录——事件对象及事件修饰符<br>
 >>【1】在VueJs中的事件是使用 v-on:click/mouseover...="function的名字" 的形式来声明事件的,也可以使用简单的写法 @click/mouseover... 形式;<br>
 >>【2】在事件中，存在事件对象 @click="show($event)",event 就是事件对象;在事件处理程序中调用 event.preventDefault() 或 event.stopPropagation() 是非常常见的需求。尽管我们可以在 methods 中轻松实现这点，但更好的方式是：methods 只有纯粹的数据逻辑，而不是去处理 DOM 事件细节<br>
->>【3】为了解决这个问题， Vue.js 为 v-on 提供了 事件修饰符。通过由点(.)表示的指令后缀来调用修饰符。如在事件demo1中,使用.stop阻止事件冒泡。[Demo源码](https://github.com/BIGBANGTAEYANG/VueJs_Study/blob/master/Events/Event-Demo1.html)<br>
+>>【3】为了解决这个问题， Vue.js 为 v-on 提供了 事件修饰符。通过由点(.)表示的指令后缀来调用修饰符。如在事件demo1中,使用.stop阻止事件冒泡,以及使用.prevent可以阻止默认事件[Demo源码](https://github.com/BIGBANGTAEYANG/VueJs_Study/blob/master/Events/Event-Demo1.html)<br>
+>>【4】详细事件修饰符使用方法以及键值修饰符方法，参考[官网](https://cn.vuejs.org/v2/guide/events.html)
