@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EventDemo</title>
+    <link rel="stylesheet" href="../dist/semantic/semantic.min.css">
+    <script src="../dist/asset/js/jquery.min.js"></script>
+    <script src="../dist/semantic/semantic.min.js"></script>
+    <script src="../dist/asset/vue/vue.js"></script>
+    <script src="../dist/asset/vue/vue-resource.min.js"></script>
+
+</head>
+    <body>
+        <div class="ui-container" id="container">
+            <div class="ui action input">
+              <input type="text" @keydown.enter="search()" placeholder="搜索全部.....">
+              <button class="ui teal button" @click="search()">无参Get</button>
+            </div>
+            <br/><br/>
+            <div class="ui action input">
+              <input type="text" v-model="userid" @keydown.enter="search2()" placeholder="根据ID搜索.....">
+              <button class="ui teal button" @click="search2()">带参Get</button>
+            </div>
+            <br/><br/>
+            <div class="ui action input">
+               <input type="text" v-model="firstName"  placeholder="姓">
+               <input type="text" v-model="lastName"placeholder="名">
+               <input type="text" v-model="email" placeholder="邮箱">
+               <button class="ui primary button" @click="add()">带参Post</button>
+            </div>
+           
+
+
+            <hr>
+            <table class="ui teal selectable celled table ">
+                <thead>
+                  <tr>
+                      <th class="two wide">Number：</th>
+                      <th class="two wide">FirstName：</th>
+                      <th class="two wide">LastName</th>
+                      <th class="two wide">Email：</th>
+                      <th class="four wide">操作：</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="user in userdata">
+                        <td>{{user.id}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <button class="ui teal button" v-on:click="update(user.id)">编辑</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                   <tr>
+                    <th colspan="5" v-show="userdata.length==0">
+                            <div class="ui warning message">
+                                暂无数据......
+                            </div>
+                    </th>
+                  </tr>
+                </tfoot>
+            </table>
+
+            <!--弹出层-->
+            <div class="ui small modal">
+                    <div class="header">{{header}}</div>
+                    <div class="content">
+                        <div class="ui teal action input">
+                           FirstName：<input type="text" v-model="editfirstName">
+                        </div>
+                        <div class="ui teal action input">
+                           LastName：<input type="text" v-model="editlastName">
+                        </div>
+                        <br/>
+                        <div class="ui teal action input">
+                           Email：<input type="text" v-model="editemail">
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="ui negative button">取消</button>
+                        <button class="ui positive right button">确定</button>
+                    </div>    
+            </div>
+
+        </div>
+        
+
+
+
+        <script>
+            window.onload = function(){
+                var vue = new Vue({
+                    el:"#container",
+                    data:{
+                        userdata:[
+                           
+                       ],
+                       userid:"",
+                       firstName:"",
+                       lastName:"",
+                       email:"",
+                       header:'',
+                       editfirstName:"",
+                       editlastName:"",
+                       editemail:"",
+                       editid:""
+                    },
+                    methods:{
+                        search:function(){
+                            this.$http.get('http://10.0.201.11:3000/getAllUserData').then((response) => {
+                                // 响应成功回调
+                                this.userdata=response.data.people;
+                            }, (response) => {
+                                // 响应错误回调
+                                console.log(response.err);
+                            });
+                        },
+                        search2:function(){
+                            this.$http.get('http://10.0.201.11:3000/getUserData',{params:{id:this.userid}}).then((response) => {
+                                // 响应成功回调
+                                this.userdata=response.data;
+                            }, (response) => {
+                                // 响应错误回调
+                                console.log(response.err);
+                            });
+                        },
+                        add:function(){
+                            this.$http.post('http://10.0.201.11:3000/add',
+                                {firstname:this.firstName,lastname:this.lastName,email:this.email},
+                                {
+                                    emulateJSON:true
+                                }
+                                ).then((response)=>{
+                                    this.userdata=response.data.people;
+                                },(response)=>{
+                                    console.log(response.err);
+                            });
+                        },
+                        update:function(id){
+                            this.editid = id - 1;
+                            var number = this.editid;
+                            this.header = "确定更改此用户数据么？";
+                            this.editfirstName = this.userdata[number].firstName;
+                            this.editlastName = this.userdata[number].lastName;
+                            this.editemail = this.userdata[number].email;
+                            $('.small.modal').modal({
+                                closable:false,
+                                transition:'fade up',
+                                onDeny:function(){
+                                    return true;
+                                },
+                                onApprove:function(){
+                                    vue.$http.post('http://10.0.201.11:3000/update',
+                                     {number:vue.editid,editfirstName:vue.editfirstName,editlastName:vue.editlastName,editemail:vue.editemail},
+                                     {emulateJSON:true}
+                                        ).then((response)=>{
+                                            vue.userdata=response.data.people;
+                                        },(response)=>{
+                                            console.log(response.err);
+                                    });
+                                  return true;     
+                                }
+                            }).modal('show');
+                        }
+
+                    }
+                });
+            }
+        </script>
+
+    </body>
+</html>

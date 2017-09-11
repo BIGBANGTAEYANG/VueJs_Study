@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TYBlog</title>
+    <link rel="stylesheet" href="../dist/semantic/semantic.min.css">
+    <script src="../dist/asset/js/jquery.min.js"></script>
+    <script src="../dist/semantic/semantic.min.js"></script>
+    <script src="../dist/asset/vue/vue.js"></script>
+    <!--- Example CSS -->
+    <style>
+    body {
+        padding: 1em;
+    }
+    .ui.menu {
+        margin: 3em 0em;
+    }
+    .ui.menu:last-child {
+        margin-bottom: 110px;
+    }
+    </style>
+
+</head>
+    <body>
+        <div class="fluid ui main container" id="mainContainer">
+            <div class="ui inverted menu">
+                <a class="active item" href="#">首页</a>
+                <a class="item" href="#">热门</a>
+                <a class="item" href="#">社区</a>
+                <div class="ui dropdown item">分类<i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" :href="item.url" v-for="item in dropdownmenu">{{item.name}}</a>
+                    </div>
+                </div>
+                <div class="right menu">
+                    <div class="item">
+                    <div class="ui transparent inverted icon input">
+                        <i class="search icon"></i>
+                        <input type="text" placeholder="关键字搜索....">
+                    </div>
+                    </div>
+                    <a class="item" href="#">登录</a>
+                </div>
+            </div>
+
+                <div class="ui container segment">
+                    <h1 class="ui header">火影忍者</h1>
+                    <img class="ui small left floated image transition visible" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3455205360,3244468299&fm=27&gp=0.jpg">
+                    <p>简介:</p>
+                    <p>这是一个忍者的世界。从小身上封印着邪恶的九尾妖狐， 鸣人受尽了村人的冷落，只是拼命用各种恶作剧试图吸引大家的注意力。好在还是有依鲁卡老师关心他，鸣人的性格才没有变得扭曲，他总是干劲十足，超级乐观。为了让更多的人认可自己，鸣人的目标是成为第六代火影!鸣人的同伴，是由老师确定的同班同学，随着共同的战斗，终于成了互相认可、信赖的好伙伴。由日本集英社授权，连环画出版社正式引进出版，北京中少动漫图书有限公司发行的正式简体中文版《火影忍者》截至2012年7月已发行第60卷。</p>
+                    <p>第一部</p>
+                    <p> 木叶忍者村突然遭到九尾妖狐的袭击，第四代火影牺牲生命将妖狐封印到当时还是婴儿的鸣人身上。村人将鸣人当做妖狐的化身，对他冷眼相待，鸣人为了得到大家的认同而不断在村里搞恶作剧，以引起人们的注意。鸣人的目标是成为村子里最伟大的忍者“火影”，让所有人认同他的存在。在忍者学校是万年吊车尾的鸣人，终于得到伊鲁卡老师的认同而顺利毕业，并和同期毕业的佐助、小樱分配到同一小组。指导上忍卡卡西为了培育鸣人他们的团队合作精神而在生存训练中设下各种考验，最终判定他们合格，也使得鸣人他们学习到了团队合作的重要性。卡卡西小组收到任务，保护造桥专家达兹纳回到波之国。但在任务途中，他们遭到雾忍者村的叛忍桃地再不斩的攻击，这也成为了他们的第一次实战。众人在战斗中各自都有所成长，也了解到了忍者世界的残酷性。</p>
+                    <button class="ui teal right  labeled icon button"><i class="right arrow icon"></i>查看更多</button>
+                </div>
+
+                <div class="ui container segment">
+                    <h1 class="ui header">火影忍者</h1>
+                    <img class="ui small left floated image transition visible" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3455205360,3244468299&fm=27&gp=0.jpg">
+                    <p>简介:</p>
+                    <p>这是一个忍者的世界。从小身上封印着邪恶的九尾妖狐， 鸣人受尽了村人的冷落，只是拼命用各种恶作剧试图吸引大家的注意力。好在还是有依鲁卡老师关心他，鸣人的性格才没有变得扭曲，他总是干劲十足，超级乐观。为了让更多的人认可自己，鸣人的目标是成为第六代火影!鸣人的同伴，是由老师确定的同班同学，随着共同的战斗，终于成了互相认可、信赖的好伙伴。由日本集英社授权，连环画出版社正式引进出版，北京中少动漫图书有限公司发行的正式简体中文版《火影忍者》截至2012年7月已发行第60卷。</p>
+                    <p>第一部</p>
+                    <p> 木叶忍者村突然遭到九尾妖狐的袭击，第四代火影牺牲生命将妖狐封印到当时还是婴儿的鸣人身上。村人将鸣人当做妖狐的化身，对他冷眼相待，鸣人为了得到大家的认同而不断在村里搞恶作剧，以引起人们的注意。鸣人的目标是成为村子里最伟大的忍者“火影”，让所有人认同他的存在。在忍者学校是万年吊车尾的鸣人，终于得到伊鲁卡老师的认同而顺利毕业，并和同期毕业的佐助、小樱分配到同一小组。指导上忍卡卡西为了培育鸣人他们的团队合作精神而在生存训练中设下各种考验，最终判定他们合格，也使得鸣人他们学习到了团队合作的重要性。卡卡西小组收到任务，保护造桥专家达兹纳回到波之国。但在任务途中，他们遭到雾忍者村的叛忍桃地再不斩的攻击，这也成为了他们的第一次实战。众人在战斗中各自都有所成长，也了解到了忍者世界的残酷性。</p>
+                    <button class="ui teal right  labeled icon button"><i class="right arrow icon"></i>查看更多</button>
+                </div>
+
+
+
+
+
+            <div class="ui inverted vertical footer segment">
+                <div class="ui center aligned container">
+                <img src="assets/images/logo.png" class="ui centered mini image">
+                <div class="ui horizontal inverted small divided link list">
+                    <a class="item" href="#">Site Map</a>
+                    <a class="item" href="#">Contact Us</a>
+                    <a class="item" href="#">Terms and Conditions</a>
+                    <a class="item" href="#">Privacy Policy</a>
+                </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <script type="text/javascript">
+             window.onload=function(){
+                var vue = new Vue({
+                    el:"#mainContainer",
+                    data:{
+                        dropdownmenu:[{"name":"Java","url":"https://www.java.com/zh_CN/"},{"name":"Node.Js","url":"https://nodejs.org/en/"},{"name":"Vue.Js","url":"https://cn.vuejs.org/"}]
+                    }
+                });
+
+                //下拉js
+                $('.ui.menu .ui.dropdown').dropdown({
+                    on: 'hover'
+                });
+                //选择卡active
+                $('.ui.menu a.item').on('click', function() {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+
+             };
+        </script>
+
+
+    </body>
+</html>
