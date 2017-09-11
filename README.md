@@ -33,5 +33,5 @@
     });
  ```
  【4】Get带参数与不带参数获取数据以及Post方式使用案例,参考[Demo-Get/Post](https://github.com/BIGBANGTAEYANG/VueJs_Study/blob/master/Vue-ResourceDemo/VueResource-Get.html)<br>
- (上述的Url是使用的node做的服务器,服务器可以自选，数据格式可以自定义)
+ (上述的Url是使用的node做的服务器,服务器可以自选，数据格式可以自定义)<br>
  【5】Jsonp使用案例--模仿百度搜索列表,参考[Demo-Jsonp](https://github.com/BIGBANGTAEYANG/VueJs_Study/blob/master/Vue-ResourceDemo/VueResource-Jsonp.html)<br>
