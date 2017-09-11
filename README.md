@@ -36,4 +36,4 @@
  (上面Get/Post案例中的Url是使用的node做的服务器,服务器可以自选，数据格式可以自定义)<br>
  【5】Jsonp使用案例--模仿百度搜索列表,参考[Demo-Jsonp](https://github.com/BIGBANGTAEYANG/VueJs_Study/blob/master/Vue-ResourceDemo/VueResource-Jsonp.html)<br>
  【6】Jsonp案例效果如下:<br>
- ![]()<br>
+ ![](https://github.com/BIGBANGTAEYANG/VueJs_Study/blob/master/DemoImage/Jsonp.png)<br>
