@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../dist/semantic/semantic.min.css">
+    <script src="../../dist/asset/js/jquery.min.js"></script>
+    <script src="../../dist/semantic/semantic.min.js"></script>
+    <script src="../../dist/asset/vue/vue.js"></script>
+
+    <script>
+        Vue.directive('move',function(el){
+             var movediv = el;
+             movediv.onmousedown = function(ev){
+                var disX = ev.clientX-movediv.offsetLeft;
+                var disY = ev.clientY-movediv.offsetTop;
+
+                document.onmousemove = function(ev){
+                    var l = ev.clientX - disX;
+                    var t = ev.clientY - disY;
+                    movediv.style.left = l +"px";
+                    movediv.style.top = t +"px";
+                };
+
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+
+             };
+        });
+
+        window.onload = function(){
+            var vm = new Vue({
+                el:"#box",
+                data:{
+
+                }
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <div class="ui container" id="box"> 
+        <div v-move class="ui container segment" 
+        :style="{width:'100px',height:'100px',background:'blue',position:'absolute'}">
+
+        </div>
+    </div>
+</body>
+</html>
